@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter with Delay</title>
+</head>
+<body>
+<script>
+function delay(N) {
+  return new Promise(resolve => setTimeout(resolve, N * 1000));
+}
+
+async function counter(N) {
+  while (N >= 0) {
+    console.log(N);
+    await delay(1);
+    N--;
+  }
+}
+
+counter(10);  // Запускаем счётчик от 10 до 0
+</script>
+</body>
+</html>

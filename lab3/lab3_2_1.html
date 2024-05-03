@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delay Function</title>
+</head>
+<body>
+<script>
+function delay(N) {
+  return new Promise(resolve => setTimeout(resolve, N * 1000));
+}
+
+delay(3).then(() => console.log("Прошло 3 секунды"));
+</script>
+</body>
+</html>
