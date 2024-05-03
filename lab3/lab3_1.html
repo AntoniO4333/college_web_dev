@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter</title>
+<style>
+  body { display: flex; justify-content: center; align-items: center; height: 100vh; }
+  .counter { font-size: 48px; margin-bottom: 20px; }
+  button { font-size: 16px; padding: 10px; margin: 5px; }
+</style>
+</head>
+<body>
+<div class="counter">10</div>
+<button id="start">Start</button>
+<button id="pause">Pause</button>
+<button id="stop">Stop</button>
+
+<script>
+function createCounter(n) {
+  let count = n;
+  let timerId = null;
+
+  return {
+    start: function() {
+      if (timerId === null) {
+        timerId = setInterval(() => {
+          if (count >= 0) {
+            document.querySelector('.counter').textContent = count;
+            count--;
+          } else {
+            clearInterval(timerId);
+          }
+        }, 1000);
+      }
+    },
+    pause: function() {
+      clearInterval(timerId);
+      timerId = null;
+    },
+    stop: function() {
+      clearInterval(timerId);
+      timerId = null;
+      count = n;
+      document.querySelector('.counter').textContent = count;
+    }
+  };
+}
+
+const counter = createCounter(10);
+
+document.getElementById('start').addEventListener('click', () => counter.start());
+document.getElementById('pause').addEventListener('click', () => counter.pause());
+document.getElementById('stop').addEventListener('click', () => counter.stop());
+</script>
+</body>
+</html>
